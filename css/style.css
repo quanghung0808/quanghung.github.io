@@ -1,13 +1,13 @@
-@import "bootstrap.min.css";
-@import "bootstrap-grid.min.css";
-@import "animate.css";
-@import "ionicons.min.css";
-@import "linearicons.css";
-@import "animsition.css";
-@import "magnific-popup.css";
-@import "magnific-popup.css";
-@import "jquery.pagepiling.css";
-@import "owl.carousel.css";
+@import 'bootstrap.min.css';
+@import 'bootstrap-grid.min.css';
+@import 'animate.css';
+@import 'ionicons.min.css';
+@import 'linearicons.css';
+@import 'animsition.css';
+@import 'magnific-popup.css';
+@import 'magnific-popup.css';
+@import 'jquery.pagepiling.css';
+@import 'owl.carousel.css';
 html {
   font-size: 12px;
   -webkit-font-smoothing: antialiased;
@@ -44,8 +44,8 @@ body {
 }
 @font-face {
   font-family: poppins;
-  src: url(../fonts/poppins-regular-webfont.html) format("woff2"),
-    url(../fonts/poppins-regular-webfont.woff) format("woff");
+  src: url(../fonts/poppins-regular-webfont.html) format('woff2'),
+    url(../fonts/poppins-regular-webfont.woff) format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -176,13 +176,13 @@ a:hover {
 a:focus {
   text-decoration: none;
 }
-input[type="text"],
-input[type="address"],
-input[type="url"],
-input[type="password"],
-input[type="email"],
-input[type="search"],
-input[type="tel"],
+input[type='text'],
+input[type='address'],
+input[type='url'],
+input[type='password'],
+input[type='email'],
+input[type='search'],
+input[type='tel'],
 textarea {
   display: inline-block;
   width: 100%;
@@ -208,13 +208,13 @@ textarea {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-input[type="text"]:focus,
-input[type="address"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
+input[type='text']:focus,
+input[type='address']:focus,
+input[type='url']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='search']:focus,
+input[type='tel']:focus,
 textarea:focus {
   border-color: #f3ca2f;
   outline: 0;
@@ -370,7 +370,7 @@ label.error {
   position: relative;
 }
 .masked:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -836,7 +836,7 @@ a.brand:focus {
   font-size: 0;
 }
 .scrollable-content:before {
-  content: "";
+  content: '';
   display: inline-block;
   height: 100vh;
   vertical-align: middle;
@@ -1088,7 +1088,7 @@ a.brand:focus {
   transition: all 0.3s ease;
 }
 .project-box:before {
-  content: "";
+  content: '';
   position: absolute;
   right: 100%;
   margin-right: 20px;
@@ -1097,7 +1097,7 @@ a.brand:focus {
   border-top: 1px solid #fff;
 }
 .project-box:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 1px;
   height: 15px;
@@ -1195,11 +1195,11 @@ a.brand:focus {
 }
 .review-carousel .owl-prev:before {
   font-family: linearicons;
-  content: "\e93b";
+  content: '\e93b';
 }
 .review-carousel .owl-next:before {
   font-family: linearicons;
-  content: "\e93c";
+  content: '\e93c';
 }
 .review-carousel .owl-prev:hover,
 .review-carousel .owl-next:hover {
@@ -1361,8 +1361,8 @@ a.brand:focus {
 .ex-title {
   font-size: 40px;
   text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
 }
@@ -1395,11 +1395,20 @@ a.brand:focus {
 .circle.per-50 {
   background-image: conic-gradient(rgb(255, 235, 0) 50%, #ffffff 0);
 }
-.circle.per-70 {
-  background-image: conic-gradient(rgb(255, 235, 0) 70%, #ffffff 0);
+.circle.per-55 {
+  background-image: conic-gradient(rgb(255, 235, 0) 55%, #ffffff 0);
 }
 .circle.per-65 {
   background-image: conic-gradient(rgb(255, 235, 0) 65%, #ffffff 0);
+}
+.circle.per-70 {
+  background-image: conic-gradient(rgb(255, 235, 0) 70%, #ffffff 0);
+}
+.circle.per-75 {
+  background-image: conic-gradient(rgb(255, 235, 0) 75%, #ffffff 0);
+}
+.circle.per-85 {
+  background-image: conic-gradient(rgb(255, 235, 0) 85%, #ffffff 0);
 }
 .circle .inner {
   display: flex;
@@ -1446,7 +1455,7 @@ a.brand:focus {
   -moz-transition: all 0.5s;
 }
 .bg {
-  background-image: url('../images/bg/bg.jpg');;
+  background-image: url('../images/bg/bg.jpg');
 }
 .accordian ul:hover li {
   width: 50px;
