@@ -1407,6 +1407,9 @@ a.brand:focus {
 .circle.per-75 {
   background-image: conic-gradient(rgb(255, 235, 0) 75%, #ffffff 0);
 }
+.circle.per-75 {
+  background-image: conic-gradient(rgb(255, 235, 0) 80%, #ffffff 0);
+}
 .circle.per-85 {
   background-image: conic-gradient(rgb(255, 235, 0) 85%, #ffffff 0);
 }
