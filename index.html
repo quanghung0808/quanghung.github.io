@@ -1,560 +1,1349 @@
-    <!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dương Quang Hùng — Software Engineer</title>
+  <meta name="description" content="Portfolio of Dương Quang Hùng (Quang Hùng), Software Engineer specializing in React 19, TypeScript, NestJS, AI integrations & high-performance web applications.">
+  <meta name="keywords" content="Duong Quang Hung, Software Engineer, Full-Stack Developer, Product Engineer, React, TypeScript, NestJS, AI Engineer">
 
-    <link rel="shortcut icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-    <title>Quang Hung Portfolio</title>
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Dương Quang Hùng — Software Engineer">
+  <meta property="og:description" content="Detail-oriented Software Engineer crafting scalable, AI-powered web applications and high-conversion luxury web platforms.">
+  <meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&amp;display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400i&amp;display=swap" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" media="screen">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide & FontAwesome Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Modern CSS Styles -->
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(16, 24, 40, 0.65);
+      --bg-card-hover: rgba(23, 33, 54, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.4);
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --cyan: #06b6d4;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Ambient Background Gradients */
+    .ambient-glow-1 {
+      position: fixed;
+      top: -10%;
+      left: 15%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      bottom: 10%;
+      right: 5%;
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grid overlay */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation Glass header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.75);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: #fff;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin-bottom: 3rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #34d399;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+    }
+
+    .hero-h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, var(--primary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Glass Card */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Terminal Widget */
+    .terminal-card {
+      background: rgba(12, 16, 26, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .terminal-header {
+      background: rgba(255,255,255,0.05);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: #94a3b8;
+    }
+
+    .terminal-keyword { color: #f472b6; }
+    .terminal-string { color: #34d399; }
+    .terminal-func { color: #60a5fa; }
+    .terminal-num { color: #fbbf24; }
+
+    /* Key Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .metric-val {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #fff, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-lbl {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-light);
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .project-bullets {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-bullets li::before {
+      content: "•";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .tech-tag {
+      font-size: 0.78rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d1d5db;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 0.35rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .company-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .role-title {
+      font-size: 1rem;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .date-badge {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255,255,255,0.04);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    /* Skills Grid */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-cat-title {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e5e7eb;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.15);
+      color: #fff;
+    }
+
+    /* Education & Certs split */
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* Contact Form & Info */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover {
+      color: #fff;
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #d1d5db;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(16, 24, 40, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid, .projects-grid, .contact-grid, .edu-cert-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-h1 {
+        font-size: 2.75rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+      .skills-wrapper, .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-h1 {
+        font-size: 2.2rem;
+      }
+      section {
+        padding: 4rem 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="animsition">
-        <div class="loader">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
 
-        <div class="click-capture"></div>
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+  <div class="bg-grid"></div>
 
-        <div class="menu">
-            <span class="close-menu icon-cross2 right-boxed"></span>
-            <ul class="menu-list right-boxed">
-                <li data-menuanchor="page1">
-                    <a href="#page1">Home</a>
-                </li>
-                <li data-menuanchor="page2">
-                    <a href="#page2">About</a>
-                </li>
-                <li data-menuanchor="page3">
-                    <a href="#page3">Experience - Education</a>
-                </li>
-                <li data-menuanchor="page4">
-                    <a href="#page4">Skills</a>
-                </li>
-                <li data-menuanchor="page5">
-                    <a href="#page5">Projects</a>
-                </li>
-                <li data-menuanchor="page6">
-                    <a href="#page6">Achievements</a>
-                </li>
-                <li data-menuanchor="page7">
-                    <a href="#page7">Contact</a>
-                </li>
-            </ul>
-            <div class="menu-footer right-boxed">
-                <div class="social-list">
-                    <a href="https://twitter.com/hungduong0123" class="icon ion-social-twitter"></a>
-                    <a href="https://www.facebook.com/profile.php?id=100009618633334"
-                        class="icon ion-social-facebook"></a>
-                    <a href="mailto:duongquanghung0122@gmail.com" class="icon ion-social-googleplus"></a>
-                    <a href="https://www.linkedin.com/in/quanghungse/" class="icon ion-social-linkedin"></a>
-                    <a href="https://github.com/quanghung0808" class="icon ion-social-github"></a>
-                </div>
-            </div>
-        </div>
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span>Dương Quang Hùng</span>
+        <span class="brand-badge">Engineered</span>
+      </a>
 
-        <header class="navbar boxed">
-            <div class="navbar-bg"></div>
-            <a class="brand" href="#">
-                <img class="brand-img" alt="" src="images/brand.png">
-                <div class="brand-info">
-                    <div class="brand-name">Quang Hung</div>
-                    <div class="brand-text">Web Developer</div>
-                </div>
-            </a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse"
-                aria-expanded="false">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="contacts d-none d-md-block">
-                <div class="contact-item">
-                    +84 862 098 011
-                </div>
-                <div class="contact-item spacer">
-                    /
-                </div>
-                <div class="contact-item">
-                    <a href="http://paul-themes.com/cdn-cgi/l/email-protection#73101c1d0712100733011c111601075d101c1e">
-                        <span>duongquanghung0122@gmail.com</span>
-                    </a>
-                </div>
-            </div>
-        </header>
-        <div class="copy-bottom white boxed">© Quang Hung 2022.</div>
-        <div class="social-list social-list-bottom boxed">
-            <a href="https://twitter.com/hungduong0123" class="icon ion-social-twitter"></a>
-            <a href="https://www.facebook.com/profile.php?id=100009618633334" class="icon ion-social-facebook"></a>
-            <a href="mailto:duongquanghung0122@gmail.com" class="icon ion-social-googleplus"></a>
-            <a href="https://www.linkedin.com/in/quanghungse/" class="icon ion-social-linkedin"></a>
-            <a href="https://github.com/quanghung0808" class="icon ion-social-github"></a>
-        </div>
-        <div class="pagepiling">
-            <div data-anchor="page1" class="pp-scrollable text-white section section-1">
-                <div class="scroll-wrap">
-                    <div class="section-bg" style="background-image:url(images/bg/background.png);"></div>
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title d-none d-lg-block"><span>Welcome</span></div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro">
-                                            <div class="row">
-                                                <div class="col-md-8 col-lg-6">
-                                                    <p class="subtitle-top">Welcome To<br>Quang Hung Portfolio</p>
-                                                    <h1 class="display-2 text-white"><span
-                                                            class="text-primary">Hello</span> I am<br> Quang Hung</h1>
-                                                    <a href="#page2" class="icon ion-ios-play">Start</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page2" class="pp-scrollable section section-2">
-                <div class="scroll-wrap">
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title text-white  d-none d-lg-block"><span>About me</span></div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro">
-                                            <div class="row align-items-center">
-                                                <div class="col-xl-7">
-                                                    <div class="experience-box pb-5">
-                                                        <div class="experience-content">
-                                                            <div class="experience-number text-texture">About me</div>
-                                                            <br class="d-block d-sm-none">
-                                                            <div class="experience-info">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-5">
-                                                    <h2 class="title-uppercase"> <span
-                                                            class="text-primary">Profile</span> Information</h2>
-                                                    - A passionate and aspiring software engineer.</br>
-                                                    - Fullstack developer with 2 year experience.</br>
-                                                    - My greatest passion in life is using
-                                                    my technical know-how to benefit other people and
-                                                    organizations.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page3" class="pp-scrollable text-white section section-3">
-                <div class="scroll-wrap">
-                    <div class="section-bg" style="background-image:url(images/bg/resume.jpg);"></div>
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title d-none d-lg-block"><span>Experience - Education</span></div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro">
-                                            <div class="row row-resume">
-                                                <div class="col-md-6">
-                                                    <div class="col-resume">
-                                                        <h4 class="title-uppercase">Education</h4>
-                                                        <div class="resume-content">
-                                                            <div class="resume-inner">
-                                                                <div class="resume-row">
-                                                                    <h6 class="resume-type">Software Engineering Degree
-                                                                    </h6>
-                                                                    <p class="resume-study">FPT UNIVERSITY</p>
-                                                                    <p class="resume-date text-primary"> Sep 2019 -
-                                                                        Sep 2023</p>
-                                                                    <p class="resume-text">&#8620; Excellent student in
-                                                                        three consecutive semesters </br>
-                                                                        &#8620; FPT University full-tuition
-                                                                        scholarship</br>
-                                                                        &#8620; GPA: 7.89 </p>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Featured Work</a></li>
+        <li><a href="#skills">Tech Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="col-resume">
-                                                        <h4 class="title-uppercase">Experience</h4>
-                                                        <div class="resume-content">
-                                                            <div class="resume-inner">
-                                                                <div class="resume-row">
-                                                                    <h6 class="resume-type">Backend Developer</h6>
-                                                                    <p class="resume-study">FPT Software</p>
-                                                                    <p class="resume-date text-primary">Oct 2022 - Apr 2023</p>
-                                                                    <p class="resume-text">&#8620; Contributed to ION Orchard, a retail app for Singapore’s iconic shopping mall </br>&#8620; Photograph and Video
-                                                                        Editor </br>&#8620; Collaborated with front-end teams to integrate APIs, ensuring seamless user experiences.</p>
-                                                                </div>
-                                                                <div class="resume-row">
-                                                                    <h6 class="resume-type">Fullstack Developer</h6>
-                                                                    <p class="resume-study">Delta Cognition</p>
-                                                                    <p class="resume-date text-primary"> Mar 2024 – Present</p>
-                                                                    <p class="resume-text">
-                                                                        &#8620; Played a key role in designing and developing four innovative AI-driven projects: Intelligent Farming Tutor, Knowledge Graph Engine, Agnostic Data Discovery, and Career Preparation System. </br>
-                                                                        &#8620; Technologies used: React, Python, Next, Azure, Docker, and more
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page4" class="pp-scrollable section section-4">
-                <div class="scroll-wrap">
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="intro">
-                                    <div class="vertical-title text-white d-none d-lg-block"><span>Skills</span></div>
-                                    <section id="skill">
-                                        <h1 class="title-uppercase ex-title"><span class="text-primary">My </span>Skill
-                                        </h1>
-                                        <div class="wrap-circles">
-                                            <div>
-                                                <h3 class="circle-title">C</h3>
-                                                <div class="circle per-40">
-                                                    <div class="inner">40%</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 class="circle-title">Java</h3>
-                                                <div class="circle per-55">
-                                                    <div class="inner">55%</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 class="circle-title">HTML/CSS</h3>
-                                                <div class="circle per-80">
-                                                    <div class="inner">80%</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 class="circle-title">JavaScript</h3>
-                                                <div class="circle per-50">
-                                                    <div class="inner">80%</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="circle per-75">
-                                                    <div class="inner">75%</div>
-                                                </div>
-                                                <h3 class="circle-title">Typescript</h3>
-                                            </div>
-                                            <div>
-                                                <div class="circle per-85">
-                                                    <div class="inner">85%</div>
-                                                </div>
-                                                <h3 class="circle-title">React</h3>
-                                            </div>
-                                            <div>
-                                                <div class="circle per-70">
-                                                    <div class="inner">80%</div>
-                                                </div>
-                                                <h3 class="circle-title">Python</h3>
-                                            </div>
-                                            <div>
-                                                <div class="circle per-65">
-                                                    <div class="inner">65%</div>
-                                                </div>
-                                                <h3 class="circle-title">English</h3>
-
-                                            </div>
-                                        </div>
-                                </div>
-
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page5" class="pp-scrollable text-white section section-5">
-                <div class="scroll-wrap bg">
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title  d-none d-lg-block"><span>my works</span></div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h2 class="title-uppercase text-white">LATEST <span
-                                                            class="text-primary">PROJECTS</span></h2>
-                                                    <div class="row-project-box row">
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="https://phuctam175.netlify.app"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>Pharmacy Management <br>System</h5>
-                                                                    <div class="project-category">Capstone Project</div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="https://demo.greyinterviews.ai/"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>Career Preparation<br>System</h5>
-                                                                    <div class="project-category">Company Project</div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="https://mincaaiassistant.netlify.app/"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>Minca AI<br>Assistant</h5>
-                                                                    <div class="project-category">Freelance Project</div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="#"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>Agnostic Data<br>Discovery</h5>
-                                                                    <div class="project-category">Company
-                                                                        Project</div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="https://github.com/quanghung0808/7skincare"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>7 <br> Skincare</h5>
-                                                                    <div class="project-category">Freelance Project
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-project-box col-sm-6 col-md-4 col-lg-4">
-                                                            <a href="https://mincaai-franciamexico.com/"
-                                                                class="project-box">
-                                                                <div class="project-box-inner">
-                                                                    <h5>CCI Mexico <br> IA</h5>
-                                                                    <div class="project-category">Freelance Project
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page6" class="pp-scrollable text-white section section-6">
-                <div class="scroll-wrap">
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title  d-none d-lg-block"><span>Achievements</span></div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h2 class="title-uppercase text-white">ACHIEVEMENTS</h2>
-                                                    <div class="accordian">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">FPTU full-tuition scholarship</a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/a4.jpg">
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">Championship of Public Speaking</a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/a7.jpg" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">Honorable Student of Semester </a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/a2.jpg" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">Web Design For Everybody</a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/ca1.png" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">Software Development Lifecycle</a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/ca2.png" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="#">CertNexus Certified Ethical Emerging
-                                                                        Technologist </a>
-                                                                </div>
-                                                                <a href="#">
-                                                                    <img src="images/achievements/ca3.png" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="image_title">
-                                                                    <a href="https://www.cloudskillsboost.google/public_profiles/08c67e9a-e9c7-4ccd-a66c-de13058cad9a
-                                                                    ">Google Cloud Skill Boost Certification</a>
-                                                                </div>
-                                                                <a href="https://www.cloudskillsboost.google/public_profiles/08c67e9a-e9c7-4ccd-a66c-de13058cad9a
-                                                                ">
-                                                                    <img src="images/achievements/ca4.png" />
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-anchor="page7" class="pp-scrollable section section-7">
-                <div class="scroll-wrap">
-                    <div class="section-bg" style="background-image:url(images/bg/contact.jpg);"></div>
-                    <div class="scrollable-content">
-                        <div class="vertical-centred">
-                            <div class="boxed boxed-inner">
-                                <div class="vertical-title text-white d-none d-lg-block"><span>contact</span>
-                                </div>
-                                <div class="boxed">
-                                    <div class="container">
-                                        <div class="intro overflow-hidden">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h2 class="title-uppercase"><span class="text-primary">Ho Chi Minh
-                                                            City</span>,VietNam</h2>
-                                                    <h5 class="text-muted"> Binh Hung Hoa A Ward, Binh Tan District, Ho Chi Minh City, Vietnam</h5>
-                                                    </h5>
-                                                    <section class="contact-address">
-                                                        <h3><a class="mail" href="#">
-                                                                <span
-                                                                    class="__cf_email__">duongquanghung0122@gmail.com</span></a>
-                                                        </h3>
-                                                        <h3><span class="phone">+86 862 098 011</span></h3>
-                                                    </section>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="contact-info">
-                                                        <form class="js-form" novalidate="novalidate">
-                                                            <div class="row">
-                                                                <div class="form-group col-sm-6">
-                                                                    <input type="text" name="name" required=""
-                                                                        placeholder="Name*" aria-required="true">
-                                                                </div>
-                                                                <div class="form-group col-sm-6">
-                                                                    <input type="email" required="" name="email"
-                                                                        placeholder="Email*">
-                                                                </div>
-                                                                <div class="form-group col-sm-12">
-                                                                    <input type="text" name="subject"
-                                                                        placeholder="Subject (Optinal)">
-                                                                </div>
-                                                                <div class="form-group col-sm-12">
-                                                                    <textarea name="message" required=""
-                                                                        placeholder="Message*"></textarea>
-                                                                </div>
-                                                                <div class="form-group form-group-message col-sm-12">
-                                                                    <span id="success" class="text-primary">Thank
-                                                                        You,
-                                                                        your message is successfully
-                                                                        sent!</span>
-                                                                    <span id="error" class="text-primary">Sorry,
-                                                                        something went wrong </span>
-                                                                </div>
-                                                                <div class="col-sm-12"><button type="submit"
-                                                                        class="btn">Contact me</button></div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <a href="mailto:duongquanghung0122@gmail.com" class="cta-btn">
+        <i data-lucide="mail" style="width: 16px; height: 16px;"></i> Get in Touch
+      </a>
     </div>
+  </header>
 
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/animsition.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.pagepiling.min.js"></script>
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-status">
+            <span class="pulse-dot"></span>
+            Available for Senior Software Engineer Roles
+          </div>
 
-    <script src="js/scripts.js"></script>
+          <h1 class="hero-h1">Building Scalable Web Products & AI Solutions.</h1>
+
+          <p class="hero-desc">
+            Detail-oriented Software Engineer with expertise in modern frontend architectures (React 19, Next.js, Tailwind v4, Material UI, Ant Design) and robust microservice backends (NestJS, Bun, Python FastAPI, Cloudflare Workers, Docker). Specializing in AI workflow integrations and high-conversion e-commerce platforms.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="cta-btn">
+              Explore Featured Projects <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+            </a>
+            <a href="Duong-Quang-Hung.pdf" target="_blank" class="btn-secondary">
+              <i data-lucide="file-text" style="width:16px; height:16px;"></i> Download CV (PDF)
+            </a>
+            <a href="https://github.com/quanghung0808" target="_blank" class="btn-secondary">
+              <i class="fa-brands fa-github" style="font-size: 16px;"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/quanghungse/" target="_blank" class="btn-secondary">
+              <i class="fa-brands fa-linkedin" style="font-size: 16px;"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal Widget Right -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+            <span style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#64748b; margin-left:0.5rem;">engineer_profile.ts</span>
+          </div>
+          <div class="terminal-body font-mono">
+            <div><span class="terminal-keyword">const</span> engineer = {</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">name</span>: <span class="terminal-string">'Dương Quang Hùng'</span>,</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">title</span>: <span class="terminal-string">'Software Engineer'</span>,</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">location</span>: <span class="terminal-string">'Ho Chi Minh City, Vietnam'</span>,</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">coreStack</span>: [</div>
+            <div style="padding-left: 2.5rem;"><span class="terminal-string">'React.js'</span>, <span class="terminal-string">'Next.js'</span>, <span class="terminal-string">'TypeScript'</span>,</div>
+            <div style="padding-left: 2.5rem;"><span class="terminal-string">'NestJS'</span>, <span class="terminal-string">'FastAPI'</span>, <span class="terminal-string">'Docker'</span></div>
+            <div style="padding-left: 1.25rem;">],</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">aiIntegrations</span>: [<span class="terminal-string">'Gemini LLM'</span>, <span class="terminal-string">'BullMQ Queue'</span>, <span class="terminal-string">'WXT Extension'</span>],</div>
+            <div style="padding-left: 1.25rem;"><span class="terminal-func">scholarship</span>: <span class="terminal-string">'FPT University Full-Tuition'</span></div>
+            <div>};</div>
+            <div style="margin-top: 0.5rem;"><span class="terminal-keyword">await</span> engineer.<span class="terminal-func">deliverImpact</span>({ quality: <span class="terminal-num">100</span> });</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Numbers -->
+      <div class="metrics-grid">
+        <div class="glass-card metric-card">
+          <div class="metric-val">3+</div>
+          <div class="metric-lbl">Years Engineering Experience</div>
+        </div>
+        <div class="glass-card metric-card">
+          <div class="metric-val">8+</div>
+          <div class="metric-lbl">Production Products Shipped</div>
+        </div>
+        <div class="glass-card metric-card">
+          <div class="metric-val">100%</div>
+          <div class="metric-lbl">Full Tuition Scholarship Awardee</div>
+        </div>
+        <div class="glass-card metric-card">
+          <div class="metric-val">5+</div>
+          <div class="metric-lbl">AI & Automation Systems Built</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work / Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-tag"><i data-lucide="layers" style="width:14px; height:14px;"></i> Selected Engineering Work</div>
+      <h2 class="section-title">Production Systems & Featured Projects</h2>
+      <p class="section-subtitle">Real-world applications engineered for luxury e-commerce, sales automation, AI analytics, and business operations.</p>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Salesaya -->
+        <div class="glass-card project-card">
+          <div class="project-badge">AI Assistant & Automation</div>
+          <h3 class="project-title">
+            Salesaya – AI Sales Assistant Platform
+            <a href="https://bit.ly/4wxf0IN" target="_blank" style="color:var(--text-muted);"><i data-lucide="external-link" style="width:18px; height:18px;"></i></a>
+          </h3>
+          <p class="project-desc">AI-powered Chrome extension and high-performance microservices platform enabling real-time contextual reply suggestions for social sales teams.</p>
+          <ul class="project-bullets">
+            <li>Built Chrome Extension (WXT + React 19 + Tailwind v4) integrated seamlessly into Pancake / Facebook chat interfaces.</li>
+            <li>Architected async AI pipeline with BullMQ + Redis processing large volume Gemini LLM requests reliably.</li>
+            <li>Implemented AI-based lead scoring and integrated Pancake, Lark Suite, & NocoDB APIs.</li>
+            <li>Setup CI/CD pipelines via Dokploy, Docker, GitHub Actions with Sentry error monitoring.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">React 19</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">WXT Extension</span>
+            <span class="tech-tag">NestJS</span>
+            <span class="tech-tag">Bun</span>
+            <span class="tech-tag">BullMQ</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Gemini API</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Jemmia E-commerce -->
+        <div class="glass-card project-card">
+          <div class="project-badge">Luxury E-Commerce & Systems</div>
+          <h3 class="project-title">
+            Jemmia Diamond E-Commerce Platform
+            <a href="https://jemmia.vn" target="_blank" style="color:var(--text-muted);"><i data-lucide="external-link" style="width:18px; height:18px;"></i></a>
+          </h3>
+          <p class="project-desc">Luxury diamond e-commerce platform driving online sales, qualified lead generation, and custom ring configurations.</p>
+          <ul class="project-bullets">
+            <li>Engineered advanced diamond search, jewelry customization, AJAX cart, and live order tracking.</li>
+            <li>Leveraged Cloudflare services (KV, R2, Queue, Scheduler) and HonoJS micro-services for ultra-fast performance.</li>
+            <li>Structured Schema.org data and optimized critical web vitals for maximum SEO visibility.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">Liquid</span>
+            <span class="tech-tag">JavaScript ES6+</span>
+            <span class="tech-tag">SCSS</span>
+            <span class="tech-tag">HonoJS</span>
+            <span class="tech-tag">Cloudflare R2/KV</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Jemmia Product Search & Virtual Try-On -->
+        <div class="glass-card project-card">
+          <div class="project-badge">AI & Interactive Web Apps</div>
+          <h3 class="project-title">
+            Jemmia Product Search & AI Try-On
+            <a href="https://products.jemmia.vn" target="_blank" style="color:var(--text-muted);"><i data-lucide="external-link" style="width:18px; height:18px;"></i></a>
+          </h3>
+          <p class="project-desc">Internal sales enablement tool with sub-second GIA diamond filtering and AI-powered virtual jewelry try-on.</p>
+          <ul class="project-bullets">
+            <li>Reduced sales rep non-selling activity time by delivering instant search access to GIA inventories.</li>
+            <li>Implemented AI-powered Virtual Try-On allowing customers to preview luxury jewelry digitally.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">React 19</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Tailwind v4</span>
+            <span class="tech-tag">TanStack Query</span>
+            <span class="tech-tag">Framer Motion</span>
+            <span class="tech-tag">Shadcn UI</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Partner Management Platform -->
+        <div class="glass-card project-card">
+          <div class="project-badge">FinTech & Operations</div>
+          <h3 class="project-title">
+            Affiliate & Partner Platform
+            <a href="https://partners.jemmia.vn" target="_blank" style="color:var(--text-muted);"><i data-lucide="external-link" style="width:18px; height:18px;"></i></a>
+          </h3>
+          <p class="project-desc">Affiliate commission tracking system with automated KYC verification, wallet withdrawals, and order webhooks.</p>
+          <ul class="project-bullets">
+            <li>Integrated Haravan webhooks for real-time order commission calculations.</li>
+            <li>Built secure digital wallet, withdrawal management, and Zalo ZNS / Lark approval automation.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">NestJS</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Cloudflare R2</span>
+            <span class="tech-tag">Zalo ZNS</span>
+            <span class="tech-tag">Lark Suite API</span>
+          </div>
+        </div>
+
+        <!-- Project 5: Intelligent Farming Tutor -->
+        <div class="glass-card project-card">
+          <div class="project-badge">AI Platform MVP</div>
+          <h3 class="project-title">
+            Intelligent Farming Tutor (AI Platform)
+          </h3>
+          <p class="project-desc">AI-powered educational platform introduced to African nations, focusing on agricultural support and automated assistance.</p>
+          <ul class="project-bullets">
+            <li>Led full-stack engineering from architectural design to containerized cloud deployment.</li>
+            <li>Built real-time streaming interfaces using FastAPI WebSockets and Redis Celery tasks.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Python FastAPI</span>
+            <span class="tech-tag">Redux</span>
+            <span class="tech-tag">Celery</span>
+            <span class="tech-tag">WebSocket</span>
+            <span class="tech-tag">Docker</span>
+          </div>
+        </div>
+
+        <!-- Project 6: CCI Multi-Channel AI Assistant -->
+        <div class="glass-card project-card">
+          <div class="project-badge">Customer Support Platform</div>
+          <h3 class="project-title">
+            CCI Interface & Minca AI Assistant
+          </h3>
+          <p class="project-desc">Multi-channel AI customer support system with WhatsApp & Web integrations, real-time analytics dashboard, and automated workflows.</p>
+          <ul class="project-bullets">
+            <li>Designed interactive dashboards for live conversation monitoring, KPI analytics, and Google Sheets sync.</li>
+            <li>Simulated complex operational task support using autonomous AI agents.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Zustand</span>
+            <span class="tech-tag">Shadcn UI</span>
+            <span class="tech-tag">React Query</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Timeline -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-tag"><i data-lucide="briefcase" style="width:14px; height:14px;"></i> Career History</div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-subtitle">Proven track record of driving technical execution, product ownership, and engineering excellence across fast-paced environments.</p>
+
+      <div class="timeline">
+
+        <!-- Experience 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">Jemmia Diamond</h3>
+                <div class="role-title">Product Engineer</div>
+              </div>
+              <span class="date-badge">July 2025 – Present</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+              Leading digital product initiatives to empower sales teams, automate internal business operations, and optimize customer acquisition for Vietnam's leading luxury diamond retailer.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">E-Commerce Architecture</span>
+              <span class="tech-tag">Chrome Extension (WXT)</span>
+              <span class="tech-tag">AI Queue Processing</span>
+              <span class="tech-tag">Cloudflare Ecosystem</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">Delta Cognition</h3>
+                <div class="role-title">Software Engineer</div>
+              </div>
+              <span class="date-badge">March 2024 – June 2025</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+              Played a pivotal role in engineering innovative AI-driven proof-of-concept (POC) and MVP products directly aligned with executive vision.
+            </p>
+            <ul style="color:var(--text-muted); font-size:0.9rem; padding-left:1.2rem; margin-bottom:1rem;">
+              <li>Engineered AI-driven interview simulators with avatar synthesis, speech recognition, and dynamic question engines.</li>
+              <li>Developed Agnostic Data Discovery tools leveraging LLMs to process complex customer datasets for analysts.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">Python FastAPI</span>
+              <span class="tech-tag">Zustand</span>
+              <span class="tech-tag">Azure Blob</span>
+              <span class="tech-tag">Docker / Traefik</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">FPT Software (FHM.ADG)</h3>
+                <div class="role-title">Backend Developer</div>
+              </div>
+              <span class="date-badge">October 2022 – April 2023</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+              Contributed to backend development for <strong>ION Orchard</strong>, a large-scale retail & shopping mall application in Singapore serving thousands of daily active users.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Java 8</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">Azure DevOps</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills & Stack -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-tag"><i data-lucide="code" style="width:14px; height:14px;"></i> Capabilities</div>
+      <h2 class="section-title">Technical Skills & Ecosystem</h2>
+      <p class="section-subtitle">Modern technology stack built around performance, type safety, modular design, and cloud scalability.</p>
+
+      <div class="skills-wrapper">
+        <!-- Programming & Core -->
+        <div class="glass-card">
+          <h3 class="skill-cat-title"><i data-lucide="terminal" style="color:var(--cyan)"></i> Languages</h3>
+          <div class="skill-list">
+            <span class="skill-badge">TypeScript</span>
+            <span class="skill-badge">JavaScript (ES6+)</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">Liquid</span>
+            <span class="skill-badge">SQL</span>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="glass-card">
+          <h3 class="skill-cat-title"><i data-lucide="layout" style="color:var(--primary-light)"></i> Frontend Stack</h3>
+          <div class="skill-list">
+            <span class="skill-badge">React.js</span>
+            <span class="skill-badge">Next.js</span>
+            <span class="skill-badge">Redux</span>
+            <span class="skill-badge">Zustand</span>
+            <span class="skill-badge">React Query</span>
+            <span class="skill-badge">RTK Query</span>
+            <span class="skill-badge">Tailwind CSS</span>
+            <span class="skill-badge">Material UI</span>
+            <span class="skill-badge">ShadCN</span>
+            <span class="skill-badge">Ant Design</span>
+            <span class="skill-badge">Framer Motion</span>
+          </div>
+        </div>
+
+        <!-- Backend & Microservices -->
+        <div class="glass-card">
+          <h3 class="skill-cat-title"><i data-lucide="server" style="color:var(--cyan)"></i> Backend & Cloud</h3>
+          <div class="skill-list">
+            <span class="skill-badge">FastAPI</span>
+            <span class="skill-badge">Spring Boot</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">NestJS</span>
+            <span class="skill-badge">Hono</span>
+            <span class="skill-badge">Celery</span>
+            <span class="skill-badge">Nginx</span>
+            <span class="skill-badge">Docker</span>
+            <span class="skill-badge">Traefik</span>
+            <span class="skill-badge">BullMQ</span>
+            <span class="skill-badge">WebSocket</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education, Certifications & Achievements -->
+  <section>
+    <div class="container">
+      <div class="edu-cert-grid">
+        <!-- Education -->
+        <div>
+          <div class="section-tag"><i data-lucide="graduation-cap" style="width:14px; height:14px;"></i> Education</div>
+          <h2 class="section-title" style="font-size:1.75rem;">Academic Background</h2>
+          <div class="glass-card" style="margin-top:1.5rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <h3 style="color:#fff; font-size:1.15rem;">FPT University</h3>
+                <div style="color:var(--cyan); font-weight:600; margin-top:0.25rem;">Bachelor of Software Engineering</div>
+              </div>
+              <span class="date-badge">2019 – 2023</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:1rem;">
+              • Awarded <strong>100% Full-Tuition Scholarship</strong> for undergraduate studies.<br>
+              • Cumulative GPA: <strong>7.89 / 10</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications & Mentorship -->
+        <div>
+          <div class="section-tag"><i data-lucide="award" style="width:14px; height:14px;"></i> Recognized Achievements</div>
+          <h2 class="section-title" style="font-size:1.75rem;">Certifications & Leadership</h2>
+          <div class="glass-card" style="margin-top:1.5rem;">
+            <ul style="list-style:none;">
+              <li style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06);">
+                <div style="color:#fff; font-weight:600;">User Experience Research & Design Certification</div>
+                <div style="color:var(--text-dim); font-size:0.85rem;">2023</div>
+              </li>
+              <li style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06);">
+                <div style="color:#fff; font-weight:600;">Software Development Lifecycle (SDLC)</div>
+                <div style="color:var(--text-dim); font-size:0.85rem;">2022</div>
+              </li>
+              <li>
+                <div style="color:#fff; font-weight:600;">Public Speaking Championship & FPTU Mentor</div>
+                <div style="color:var(--text-dim); font-size:0.85rem;">2019 - 2020 • Guided candidates for national scholarship competition</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-tag"><i data-lucide="send" style="width:14px; height:14px;"></i> Connect</div>
+      <h2 class="section-title">Let's Build Something Extraordinary</h2>
+      <p class="section-subtitle">Interested in collaborating or discussing full-stack engineering opportunities? Reach out directly below.</p>
+
+      <div class="contact-grid">
+        <div>
+          <a href="mailto:duongquanghung0122@gmail.com" class="contact-item">
+            <div class="icon-box"><i data-lucide="mail"></i></div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-dim);">EMAIL ME</div>
+              <div style="font-weight:600; color:#fff;">duongquanghung0122@gmail.com</div>
+            </div>
+          </a>
+
+          <a href="tel:+84862098011" class="contact-item">
+            <div class="icon-box"><i data-lucide="phone"></i></div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-dim);">PHONE / ZALO</div>
+              <div style="font-weight:600; color:#fff;">+84 862 098 011</div>
+            </div>
+          </a>
+
+          <div class="contact-item">
+            <div class="icon-box"><i data-lucide="map-pin"></i></div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-dim);">LOCATION</div>
+              <div style="font-weight:600; color:#fff;">Ho Chi Minh City, Vietnam</div>
+            </div>
+          </div>
+
+          <a href="https://github.com/quanghung0808" target="_blank" class="contact-item">
+            <div class="icon-box"><i class="fa-brands fa-github" style="font-size: 20px;"></i></div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-dim);">GITHUB</div>
+              <div style="font-weight:600; color:#fff;">github.com/quanghung0808</div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/quanghungse/" target="_blank" class="contact-item">
+            <div class="icon-box"><i class="fa-brands fa-linkedin-in" style="font-size: 20px;"></i></div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-dim);">LINKEDIN</div>
+              <div style="font-weight:600; color:#fff;">linkedin.com/in/quanghungse</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Interactive Form -->
+        <div class="glass-card">
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" name="name" id="senderName" class="form-input" placeholder="e.g. Alex Morgan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" id="senderEmail" class="form-input" placeholder="alex@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea name="message" id="senderMessage" class="form-input" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="cta-btn" style="width:100%; justify-content:center; cursor:pointer;">
+              Send Message <i data-lucide="send" style="width:16px; height:16px;"></i>
+            </button>
+  <!-- Modern Toast Popup Notification Container -->
+  <div id="toastNotification" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; align-items: center; gap: 0.85rem; padding: 1rem 1.35rem; background: rgba(16, 24, 40, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2); transform: translateY(120%); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
+    <div id="toastIconBox" style="width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.3); color: #34d399; flex-shrink: 0;">
+      <i id="toastIcon" data-lucide="check-circle-2" style="width: 20px; height: 20px;"></i>
+    </div>
+    <div>
+      <div id="toastTitle" style="font-weight: 700; font-size: 0.95rem; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">Message Sent!</div>
+      <div id="toastMessage" style="font-size: 0.85rem; color: #94a3b8;">Your message was delivered to Quang Hùng.</div>
+    </div>
+    <button onclick="hideToast()" style="background: none; border: none; color: #64748b; cursor: pointer; padding: 0.25rem; margin-left: 0.5rem; display: flex; align-items: center;" aria-label="Close notification">
+      <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+    </button>
+  </div>
+
+  <script>
+    let toastTimeout;
+    function showToast(title, message, type = 'success') {
+      const toast = document.getElementById('toastNotification');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+      const iconBox = document.getElementById('toastIconBox');
+      const icon = document.getElementById('toastIcon');
+
+      toastTitle.innerText = title;
+      toastMessage.innerText = message;
+
+      if (type === 'success') {
+        iconBox.style.background = 'rgba(52, 211, 153, 0.15)';
+        iconBox.style.borderColor = 'rgba(52, 211, 153, 0.3)';
+        iconBox.style.color = '#34d399';
+        icon.setAttribute('data-lucide', 'check-circle-2');
+      } else if (type === 'loading') {
+        iconBox.style.background = 'rgba(99, 102, 241, 0.15)';
+        iconBox.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+        iconBox.style.color = '#818cf8';
+        icon.setAttribute('data-lucide', 'loader-2');
+      } else {
+        iconBox.style.background = 'rgba(239, 68, 68, 0.15)';
+        iconBox.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+        iconBox.style.color = '#f87171';
+        icon.setAttribute('data-lucide', 'alert-triangle');
+      }
+
+      if (window.lucide) lucide.createIcons();
+
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      toast.style.pointerEvents = 'auto';
+
+      clearTimeout(toastTimeout);
+      if (type !== 'loading') {
+        toastTimeout = setTimeout(() => {
+          hideToast();
+        }, 5000);
+      }
+    }
+
+    function hideToast() {
+      const toast = document.getElementById('toastNotification');
+      toast.style.transform = 'translateY(120%)';
+      toast.style.opacity = '0';
+      toast.style.pointerEvents = 'none';
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const name = document.getElementById('senderName').value;
+      const email = document.getElementById('senderEmail').value;
+      const message = document.getElementById('senderMessage').value;
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+
+      showToast('Transmitting Message...', 'Connecting to Quang Hùng\'s email service...', 'loading');
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'a27918a2-2c67-4e01-9252-78d10edc64b6',
+            name: name,
+            email: email,
+            message: message,
+            subject: `New Portfolio Message from ${name}`
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showToast('Message Delivered! ✨', 'Thank you! Quang Hùng will reply to your email shortly.', 'success');
+          document.getElementById('contactForm').reset();
+        } else {
+          throw new Error(data.message || 'Failed to send message.');
+        }
+      } catch (err) {
+        showToast('Email Client Fallback', 'Opening your default mail client...', 'error');
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:duongquanghung0122@gmail.com?subject=${subject}&body=${body}`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      }
+    });
+  </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Dương Quang Hùng. Engineered with precision & modern web standards.</p>
+    </div>
+  </footer>
+
+  <!-- Lucide Icon Initialization -->
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
-
-
 </html>
